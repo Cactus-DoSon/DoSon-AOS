@@ -9,6 +9,7 @@ import com.cactus.doson.common.Constants.BASE_URL
 import com.cactus.doson.common.Constants.KAKAO_TAG
 import com.cactus.doson.common.Constants.PREFERENCES_NAME
 import com.cactus.doson.common.util.printLog
+import com.cactus.doson.data.RetrofitAPI
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.v2.auth.BuildConfig
@@ -27,7 +28,8 @@ class DoSonApplication: Application() {
 
 
         sharedPreferences = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-        //retrofit = provideRetrofit()
+        retrofit = provideRetrofit().create(RetrofitAPI::class.java)
+
 
         KakaoSdk.init(this, "fa67c50ee7e51cd098f9ead3cf234ec7")
     }
@@ -35,7 +37,7 @@ class DoSonApplication: Application() {
 
     companion object {
         lateinit var sharedPreferences: SharedPreferences
-        lateinit var retrofit: Retrofit
+        lateinit var retrofit: RetrofitAPI
     }
 
     private fun provideRetrofit(): Retrofit =

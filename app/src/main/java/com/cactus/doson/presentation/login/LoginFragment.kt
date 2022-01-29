@@ -9,16 +9,18 @@ import androidx.fragment.app.FragmentActivity
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants
+import com.cactus.doson.data.RetrofitAPI
 import com.cactus.doson.databinding.FragmentLoginBinding
 import com.cactus.doson.presentation.home.MapFragment
 import com.cactus.doson.presentation.signin.SigninFragment
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginFragment: BaseFragment(R.layout.fragment_login) {
     private var binding: FragmentLoginBinding? = null
-    private var myContext: FragmentActivity? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
