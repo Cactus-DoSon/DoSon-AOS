@@ -17,7 +17,7 @@ import com.cactus.doson.presentation.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    var loginFragment : Fragment = LoginFragment()
+    var startFragment : Fragment = LoginFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setDefaultFragment(){
         var transaction : FragmentTransaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.container,loginFragment)
+        transaction.add(R.id.container,startFragment)
         transaction.commit()
     }
 

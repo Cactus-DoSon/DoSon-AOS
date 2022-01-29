@@ -17,19 +17,22 @@ class Post {
 
         @SerializedName("name")
         val name: String? = null
-
         @SerializedName("id")
         val id: Int? = null
-
         @SerializedName("code")
         val code: Int? = null
-
         @SerializedName("latitude")
         val lat: Double? = null
-
         @SerializedName("longitude")
         val lon: Double? = null
 
+
+
+
     }
+
+
+
+
 
 }
