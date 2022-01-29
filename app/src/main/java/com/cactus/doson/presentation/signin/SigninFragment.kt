@@ -1,7 +1,6 @@
 package com.cactus.doson.presentation.signin
 
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -10,11 +9,13 @@ import com.cactus.doson.DoSonApplication
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants
+import com.cactus.doson.common.Constants.ACCESS_CODE
+import com.cactus.doson.common.Constants.NICK_NAME
 import com.cactus.doson.common.util.printLog
 import com.cactus.doson.data.body.EnterBody
 import com.cactus.doson.data.response.enter.EnterResponse
 import com.cactus.doson.databinding.FragmentSigninBinding
-import com.cactus.doson.presentation.map.MapFragment
+import com.cactus.doson.presentation.home.MapFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -109,6 +110,8 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
         )?.enqueue(object : Callback<EnterResponse> {
             override fun onResponse(call: Call<EnterResponse>, response: Response<EnterResponse>) {
                 printLog(Constants.RETROFIT_TAG, response.body().toString())
+                saveStringData(Pair(ACCESS_CODE, accessCode))
+                saveStringData(Pair(NICK_NAME, nickname))
                 moveToFragment(MapFragment())
             }
 
