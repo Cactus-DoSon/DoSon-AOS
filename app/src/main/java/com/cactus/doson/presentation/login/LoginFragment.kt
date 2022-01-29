@@ -11,6 +11,7 @@ import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants
 import com.cactus.doson.databinding.FragmentLoginBinding
 import com.cactus.doson.presentation.home.MapFragment
+import com.cactus.doson.presentation.signin.SigninFragment
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
@@ -49,7 +50,7 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
                 Log.i(Constants.KAKAO_TAG, "로그인 성공 ${token.accessToken}")
 
                 val transaction = myContext!!.supportFragmentManager.beginTransaction()
-                val fragment: Fragment = MapFragment()
+                val fragment: Fragment = SigninFragment()
                 val bundle = Bundle()
                 fragment.arguments = bundle
                 transaction.replace(R.id.container, fragment)
@@ -65,7 +66,7 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
                 Log.i(Constants.KAKAO_TAG, "로그인 성공 ${token.accessToken}")
 
                 val transaction = myContext!!.supportFragmentManager.beginTransaction()
-                val fragment: Fragment = MapFragment()
+                val fragment: Fragment = SigninFragment()
                 val bundle = Bundle()
                 fragment.arguments = bundle
                 transaction.replace(R.id.container, fragment)
