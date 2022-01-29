@@ -82,10 +82,23 @@
             android:background="@drawable/bg_signin_et"
             android:hint="초대 코드"
             android:textColor="@color/black"
+            android:maxLines="1"
+            android:maxLength="8"
             android:paddingVertical="24dp"
             android:paddingHorizontal="22dp"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="초대코드를 바르게 입력해주세요."
+            android:id="@+id/tv_invitation_code_warning"
+            android:textColor="#888888"
+            android:visibility="invisible"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"/>
+
 
         <EditText
             android:id="@+id/et_nickname"
@@ -94,11 +107,23 @@
             android:background="@drawable/bg_signin_et"
             android:layout_marginTop="12dp"
             android:paddingVertical="24dp"
+            android:maxLines="1"
+            android:maxLength="8"
             android:paddingHorizontal="22dp"
             android:hint="닉네임"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이미 사용중인 닉네입니다."
+            android:visibility="invisible"
+            android:id="@+id/tv_nickname_warning"
+            android:textColor="#888888"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"/>
 
     </LinearLayout>
 

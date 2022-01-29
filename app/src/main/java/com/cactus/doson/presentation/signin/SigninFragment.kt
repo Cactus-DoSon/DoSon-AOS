@@ -70,7 +70,7 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
     }
 
     private fun updateCompleteButton() {
-        if (invitationCodeOk && nicknameOk) {
+        if (isCompleted()) {
             binding?.tvCompleteSignin?.setBackgroundColor(getColorByResId(R.color.orange))
         } else {
             binding?.tvCompleteSignin?.setBackgroundColor(getColorByResId(R.color.gray_2))
@@ -80,11 +80,14 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
 
     private fun initCompleteButton() {
         binding?.tvCompleteSignin?.setOnClickListener {
-            moveToFragment(MapFragment())
+            //TODO api 요청
+            if (isCompleted()) {
+                moveToFragment(MapFragment())
+            }
         }
     }
 
-
+    private fun isCompleted(): Boolean = invitationCodeOk && nicknameOk
 
 
 

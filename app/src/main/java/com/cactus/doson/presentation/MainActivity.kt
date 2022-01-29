@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
                 v.getFocusedRect(outRect)
                 if (!outRect.contains(event.rawX.toInt(),event.rawY.toInt())) {
                     v.clearFocus()
-                    hideSoftKeyboard(v)
+                    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.windowToken, 0)
                 }
             }
         }
