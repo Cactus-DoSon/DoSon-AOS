@@ -29,6 +29,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {
@@ -43,4 +52,25 @@ dependencies {
 
 
     implementation "com.kakao.sdk:v2-user:2.8.5"
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'jp.wasabeef:glide-transformations:4.0.0'
+
+
+    def nav_version = "2.3.5"
+    // Jetpack Navigation Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // scroll bouncing
+    implementation 'io.github.everythingme:overscroll-decor-android:1.1.1'
+
+    // loading dialog
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 }
