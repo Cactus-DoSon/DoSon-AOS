@@ -26,10 +26,8 @@ class Post {
         @SerializedName("longitude")
         val lon: Double? = null
 
-
-
-
     }
+
 
 
 

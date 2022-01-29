@@ -7,7 +7,7 @@ object Constants {
     /** Remote **/
     const val BASE_URL = "http://jwyang.shop:8080/"
     const val JWT = "jwt"
-    const val HEADER = "X-ACCESS-TOKEN"
+    const val HEADER = "X-AUTH-TOKEN"
 
 
     /** Shared Preference **/

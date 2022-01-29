@@ -1,13 +1,20 @@
-package com.cactus.doson.presentation.home
+package com.cactus.doson.presentation.map
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.cactus.doson.DoSonApplication
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
+import com.cactus.doson.common.Constants.RETROFIT_TAG
+import com.cactus.doson.common.util.printLog
+import com.cactus.doson.data.response.map_category.MapCategoryResponse
 import com.cactus.doson.databinding.FragmentMapBinding
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MapFragment: BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
     private var binding: FragmentMapBinding? = null
@@ -118,6 +125,9 @@ class MapFragment: BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
 
 
     }
+
+
+
 
 
 }
