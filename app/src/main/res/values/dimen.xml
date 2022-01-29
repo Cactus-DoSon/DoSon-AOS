@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_top_margin">24dp</dimen>
+    <dimen name="default_between_view_margin">16dp</dimen>
+
+    <dimen name="title">24sp</dimen>
+    <dimen name="description">16sp</dimen>
+
+
+</resources>

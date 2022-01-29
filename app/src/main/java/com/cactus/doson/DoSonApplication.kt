@@ -27,7 +27,7 @@ class DoSonApplication: Application() {
 
 
         sharedPreferences = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-        retrofit = provideRetrofit()
+        //retrofit = provideRetrofit()
 
         KakaoSdk.init(this, "fa67c50ee7e51cd098f9ead3cf234ec7")
     }

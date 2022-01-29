@@ -6,18 +6,18 @@ import android.view.View
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants
-import com.cactus.doson.databinding.LoginFragmentBinding
+import com.cactus.doson.databinding.FragmentLoginBinding
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
 
-class LoginFragment: BaseFragment(R.layout.login_fragment) {
-    private var binding: LoginFragmentBinding? = null
+class LoginFragment: BaseFragment(R.layout.fragment_login) {
+    private var binding: FragmentLoginBinding? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val loginFragmentBinding = LoginFragmentBinding.bind(view)
+        val loginFragmentBinding = FragmentLoginBinding.bind(view)
         binding = loginFragmentBinding
 
         initKakaoButton()
