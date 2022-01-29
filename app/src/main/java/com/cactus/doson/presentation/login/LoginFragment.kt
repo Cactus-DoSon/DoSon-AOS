@@ -3,7 +3,6 @@ package com.cactus.doson.presentation.login
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants
