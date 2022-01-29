@@ -6,8 +6,11 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
+import com.cactus.doson.DoSonApplication
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
+import com.cactus.doson.common.Constants.ACCESS_CODE
+import com.cactus.doson.common.Constants.NICK_NAME
 import com.cactus.doson.databinding.FragmentSigninBinding
 import com.cactus.doson.presentation.home.MapFragment
 
@@ -83,6 +86,8 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
             //TODO api 요청
             if (isCompleted()) {
                 moveToFragment(MapFragment())
+                saveStringData(Pair(NICK_NAME,binding?.etNickname.toString()))
+                saveStringData(Pair(ACCESS_CODE,binding?.etInvitationCode.toString()))
             }
         }
     }

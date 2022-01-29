@@ -10,4 +10,7 @@ interface RetrofitAPI {
     @GET("map/{houseId}")
     fun searchGuestAPI(@Path("houseId") houseId: Int): Call<Post?>?
 
+    @FormUrlEncoded
+    @POST("enter")
+    fun guestEnterAPI(@FieldMap param: HashMap<String, String> ): Call<Post?>?
 }

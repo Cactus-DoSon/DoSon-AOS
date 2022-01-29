@@ -12,4 +12,6 @@ object Constants {
 
     /** Shared Preference **/
     const val PREFERENCES_NAME = "preference_name"
+    const val NICK_NAME = "nick_name"
+    const val ACCESS_CODE = "access_code"
 }
