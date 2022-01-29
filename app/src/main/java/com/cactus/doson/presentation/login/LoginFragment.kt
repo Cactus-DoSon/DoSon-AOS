@@ -11,6 +11,7 @@ import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants
 import com.cactus.doson.databinding.FragmentLoginBinding
 import com.cactus.doson.presentation.home.MapFragment
+import com.cactus.doson.presentation.signin.SigninFragment
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
@@ -28,10 +29,7 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
         initKakaoButton()
     }
 
-    override fun onAttach(activity: Activity) {
-        myContext = activity as FragmentActivity
-        super.onAttach(activity)
-    }
+
 
     private fun initKakaoButton() {
         binding?.btKakaoLogin?.setOnClickListener {
@@ -44,17 +42,8 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
         val callbackForAccount: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 val keyHash: String = Utility.getKeyHash(requireContext())
-                Log.e(Constants.KAKAO_TAG, "로그인 실패 $keyHash", error)
             } else if (token != null) {
-                Log.i(Constants.KAKAO_TAG, "로그인 성공 ${token.accessToken}")
-
-                val transaction = myContext!!.supportFragmentManager.beginTransaction()
-                val fragment: Fragment = MapFragment()
-                val bundle = Bundle()
-                fragment.arguments = bundle
-                transaction.replace(R.id.container, fragment)
-                transaction.commit()
-
+                moveToFragment(SigninFragment())
             }
         }
 
@@ -62,15 +51,7 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
             if (error != null) {
                 UserApiClient.instance.loginWithKakaoAccount(requireContext(), callback = callbackForAccount)
             } else if (token != null) {
-                Log.i(Constants.KAKAO_TAG, "로그인 성공 ${token.accessToken}")
-
-                val transaction = myContext!!.supportFragmentManager.beginTransaction()
-                val fragment: Fragment = MapFragment()
-                val bundle = Bundle()
-                fragment.arguments = bundle
-                transaction.replace(R.id.container, fragment)
-                transaction.commit()
-
+                moveToFragment(SigninFragment())
             }
         }
 
@@ -81,4 +62,5 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
         }
 
     }
+
 }

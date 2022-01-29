@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.databinding.FragmentSigninBinding
+import com.cactus.doson.presentation.home.MapFragment
 
 class SigninFragment: BaseFragment(R.layout.fragment_signin) {
     private var binding: FragmentSigninBinding? = null
@@ -24,6 +25,7 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
 
 
         initEditTexts()
+        initCompleteButton()
     }
 
     private fun initEditTexts() {
@@ -38,6 +40,13 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
                 }
                 override fun afterTextChanged(p0: Editable?) {}
             })
+            it.etInvitationCode.setOnFocusChangeListener { view, isFocused ->
+                if (isFocused) {
+                    it.etInvitationCode.setBackgroundResource(R.drawable.bg_signin_et_focus)
+                } else {
+                    it.etInvitationCode.setBackgroundResource(R.drawable.bg_signin_et)
+                }
+            }
 
             it.etNickname.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -48,16 +57,35 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
                 }
                 override fun afterTextChanged(p0: Editable?) {}
             })
+
+            it.etNickname.setOnFocusChangeListener { view, isFocused ->
+                if (isFocused) {
+                    it.etNickname.setBackgroundResource(R.drawable.bg_signin_et_focus)
+                } else {
+                    it.etNickname.setBackgroundResource(R.drawable.bg_signin_et)
+                }
+            }
+
         }
     }
 
     private fun updateCompleteButton() {
         if (invitationCodeOk && nicknameOk) {
-            binding?.tvCompleteSignin?.setBackgroundResource(R.color.orange)
+            binding?.tvCompleteSignin?.setBackgroundColor(getColorByResId(R.color.orange))
         } else {
-            binding?.tvCompleteSignin?.setBackgroundResource(R.color.gray_2)
+            binding?.tvCompleteSignin?.setBackgroundColor(getColorByResId(R.color.gray_2))
         }
     }
+
+
+    private fun initCompleteButton() {
+        binding?.tvCompleteSignin?.setOnClickListener {
+            moveToFragment(MapFragment())
+        }
+    }
+
+
+
 
 
 }
