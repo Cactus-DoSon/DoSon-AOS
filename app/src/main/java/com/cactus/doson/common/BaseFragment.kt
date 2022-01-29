@@ -60,8 +60,7 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
     }
 
     fun getStringData(key: String): String? {
-        return DoSonApplication.sharedPreferences
-            .getString(key, null)
+        return DoSonApplication.sharedPreferences.getString(key, null)
     }
 
 }

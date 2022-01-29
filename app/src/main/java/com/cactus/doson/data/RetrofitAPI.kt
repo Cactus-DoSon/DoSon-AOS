@@ -28,4 +28,7 @@ interface RetrofitAPI {
         @Body body: EnterBody
     ): Call<EnterResponse>?
 
+    @FormUrlEncoded
+    @POST("enter")
+    fun guestEnterAPI(@FieldMap param: HashMap<String, String> ): Call<Post?>?
 }
