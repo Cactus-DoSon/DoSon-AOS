@@ -11,6 +11,7 @@ import com.cactus.doson.common.Constants.PREFERENCES_NAME
 import com.cactus.doson.common.util.printLog
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.util.Utility
+import com.kakao.sdk.v2.auth.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
