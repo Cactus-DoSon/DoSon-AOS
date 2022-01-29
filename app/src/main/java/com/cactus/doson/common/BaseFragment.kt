@@ -28,7 +28,6 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
     fun moveToFragment(fragment: Fragment) {
         val transaction = myContext!!.supportFragmentManager.beginTransaction()
-        val fragment: Fragment = SigninFragment()
         val bundle = Bundle()
         fragment.arguments = bundle
         transaction.replace(R.id.container, fragment)
@@ -37,7 +36,6 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
     fun moveToFragmentWithBundle(fragment: Fragment, bundle: Bundle) {
         val transaction = myContext!!.supportFragmentManager.beginTransaction()
-        val fragment: Fragment = SigninFragment()
         fragment.arguments = bundle
         transaction.replace(R.id.container, fragment)
         transaction.commit()
