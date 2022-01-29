@@ -57,6 +57,7 @@ dependencies {
     //naver map
     implementation 'com.naver.maps:map-sdk:3.14.0'
 
+
     // scroll bouncing
     implementation 'io.github.everythingme:overscroll-decor-android:1.1.1'
 
