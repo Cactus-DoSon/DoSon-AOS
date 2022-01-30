@@ -29,9 +29,6 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
         val loginFragmentBinding = FragmentLoginBinding.bind(view)
         binding = loginFragmentBinding
 
-
-
-
         initKakaoButton()
     }
 

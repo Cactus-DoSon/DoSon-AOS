@@ -112,10 +112,7 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
                 printLog(Constants.RETROFIT_TAG, response.body().toString())
                 saveStringData(Pair(ACCESS_CODE, accessCode))
                 saveStringData(Pair(NICK_NAME, nickname))
-                response.body()?.let {
-                    moveToFragment(MapFragment(it))
-                }
-
+                response.body()?.let { MapFragment(it) }?.let { moveToFragment(it) }
             }
 
             override fun onFailure(call: Call<EnterResponse>, t: Throwable) {
