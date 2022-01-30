@@ -3,6 +3,7 @@ package com.cactus.doson.presentation.login
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import com.cactus.doson.DoSonApplication
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
@@ -27,6 +28,7 @@ import retrofit2.Response
 
 class LoginFragment: BaseFragment(R.layout.fragment_login) {
     private var binding: FragmentLoginBinding? = null
+    private lateinit var callback: OnBackPressedCallback
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -3,6 +3,8 @@ package com.cactus.doson.presentation.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.FragmentManager
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.data.response.enter.EnterResponse
@@ -21,6 +23,7 @@ import com.naver.maps.map.overlay.OverlayImage
 
 class MapFragment(private val enterResponse: EnterResponse): BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
     private var binding: FragmentMapBinding? = null
+    private lateinit var callback: OnBackPressedCallback
     val guestHouseMarker = Marker()
 
     var postId = ArrayList<Int>()
@@ -32,6 +35,12 @@ class MapFragment(private val enterResponse: EnterResponse): BaseFragment(R.layo
         val mapFragmentBinding = FragmentMapBinding.bind(view)
         binding = mapFragmentBinding
         binding!!.mapView.getMapAsync(this@MapFragment)
+
+        //fragment popup
+        val fm: FragmentManager = requireActivity().supportFragmentManager
+        for (i in 0 until fm.backStackEntryCount) {
+            fm.popBackStack()
+        }
 
 
         var selected = "all"

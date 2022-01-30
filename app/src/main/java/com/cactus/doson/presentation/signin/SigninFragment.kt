@@ -5,6 +5,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.FragmentManager
 import com.cactus.doson.DoSonApplication
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
@@ -22,7 +24,7 @@ import retrofit2.Response
 
 class SigninFragment: BaseFragment(R.layout.fragment_signin) {
     private var binding: FragmentSigninBinding? = null
-
+    private lateinit var callback: OnBackPressedCallback
 
     private var invitationCodeOk = false
     private var nicknameOk = false
@@ -32,6 +34,11 @@ class SigninFragment: BaseFragment(R.layout.fragment_signin) {
         val fragmentSigninBinding = FragmentSigninBinding.bind(view)
         binding = fragmentSigninBinding
 
+        //fragment popup
+        val fm: FragmentManager = requireActivity().supportFragmentManager
+        for (i in 0 until fm.backStackEntryCount) {
+            fm.popBackStack()
+        }
 
         initEditTexts()
         initCompleteButton()
