@@ -5,7 +5,7 @@ object Constants {
     const val RETROFIT_TAG = "retrofit_tag"
 
     /** Remote **/
-    const val BASE_URL = "http://jwyang.shop:8080/"
+    const val BASE_URL = "http://13.125.168.69:8080/"
     const val JWT = "jwt"
     const val HEADER = "X-AUTH-TOKEN"
 
