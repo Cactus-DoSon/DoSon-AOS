@@ -33,6 +33,7 @@ class AddPostFragment: BaseFragment(R.layout.fragment_add_post) {
     private var category: String = "sight"
     private var imageOn: Boolean = true
     private var locationOn: Boolean = true
+
     private val filePath: String by lazy {
         "${requireActivity().externalCacheDir?.absolutePath}/image.jpeg"
     }
@@ -118,7 +119,6 @@ class AddPostFragment: BaseFragment(R.layout.fragment_add_post) {
     private fun initSelectLocationButton() {
         binding?.tvSelectLocation?.setOnClickListener {
             //moveToFragment()
-
         }
 
     }

@@ -3,38 +3,21 @@ package com.cactus.doson.presentation.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.cactus.doson.DoSonApplication
-import com.cactus.doson.DoSonApplication.Companion.retrofit
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
-import com.cactus.doson.common.Constants
-import com.cactus.doson.common.Constants.ACCESS_CODE
-import com.cactus.doson.common.Constants.NICK_NAME
-import com.cactus.doson.common.Constants.PREFERENCES_NAME
-import com.cactus.doson.common.util.printLog
-import com.cactus.doson.data.Post
-import com.cactus.doson.data.RetrofitAPI
-import com.cactus.doson.data.body.EnterBody
 import com.cactus.doson.data.response.enter.EnterResponse
-import com.cactus.doson.data.response.map_category.MapCategoryResponse
 import com.cactus.doson.databinding.FragmentMapBinding
 import com.cactus.doson.presentation.dialog.BottomSheet
 import com.cactus.doson.presentation.dialog.BottomSheet_spot
 import com.cactus.doson.presentation.location_detail.LocationDetailFragment
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.cactus.doson.presentation.post.add.AddPostFragment
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.overlay.OverlayImage
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MapFragment(private val enterResponse: EnterResponse): BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
     private var binding: FragmentMapBinding? = null
