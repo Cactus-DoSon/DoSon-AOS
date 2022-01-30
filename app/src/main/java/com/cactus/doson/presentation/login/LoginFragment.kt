@@ -35,7 +35,7 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
 
         initKakaoButton()
         getAllList()
-        getPostId(2)
+       // getPostId(2)
         getNonGuestHouseData(2)
         getGuestHouseData(1)
     }
@@ -170,21 +170,7 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
         })
     }
 
-    // 6. 글 상세보기
-    private fun getPostId(postId: Int) {
-        DoSonApplication.retrofit.getPostDetail(postId)?.enqueue(object : Callback<PostDetailResponse> {
-            override fun onResponse(
-                call: Call<PostDetailResponse>,
-                response: Response<PostDetailResponse>
-            ) {
-                Log.d(RETROFIT_TAG, response.body().toString())
-            }
 
-            override fun onFailure(call: Call<PostDetailResponse>, t: Throwable) {
-                printLog(RETROFIT_TAG, t.toString())
-            }
-        })
-    }
 
     // 7. 지도 스팟 찍었을 때 맵 바텀시트 데이터
     private fun getNonGuestHouseData(postId: Int) {

@@ -20,16 +20,7 @@ class listAdapter(private val postTitle : ArrayList<String>,private val postDeta
         fun onClick(view: View, position: Int)
     }
 
-    private lateinit var itemClickListener: ItemClickListener
-    private lateinit var likedClickListener: ItemClickListener
-
-    fun setItemClickListener(itemClickListener: ItemClickListener) {
-        this.itemClickListener = itemClickListener
-    }
-    fun setLikedClickListener(likedClickListener: ItemClickListener){
-        this.likedClickListener = likedClickListener
-    }
-
+    lateinit var callback: (Int) -> Unit
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType: Int): ViewHolder {
         val inflateView = LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
@@ -37,7 +28,7 @@ class listAdapter(private val postTitle : ArrayList<String>,private val postDeta
     }
 
     class ViewHolder(private val v: View): RecyclerView.ViewHolder(v){
-        private var view : View = v
+        var view : View = v
         var post_title = v.findViewById<TextView>(R.id.postTitle)
         var post_detail = v.findViewById<TextView>(R.id.postDetail)
         var post_date = v.findViewById<TextView>(R.id.postDate)
@@ -50,12 +41,19 @@ class listAdapter(private val postTitle : ArrayList<String>,private val postDeta
                 .into(post_img)
         }
 
+        fun bindView(position: Int) {
+
+        }
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.post_title.text = postTitle[position]
         holder.post_detail.text = postDetail[position]
         holder.post_date.text = postDate[position]
+        holder.view.setOnClickListener {
+            callback(position)
+        }
 
 
     }
