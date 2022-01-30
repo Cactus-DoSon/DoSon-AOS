@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.res.Resources
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.cactus.doson.DoSonApplication
@@ -13,7 +14,7 @@ import com.cactus.doson.presentation.signin.SigninFragment
 
 abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
     private var myContext: FragmentActivity? = null
-
+    private lateinit var callback: OnBackPressedCallback
 
     override fun onAttach(activity: Activity) {
         myContext = activity as FragmentActivity
@@ -31,13 +32,16 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
         val bundle = Bundle()
         fragment.arguments = bundle
         transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
         transaction.commit()
+
     }
 
     fun moveToFragmentWithBundle(fragment: Fragment, bundle: Bundle) {
         val transaction = myContext!!.supportFragmentManager.beginTransaction()
         fragment.arguments = bundle
         transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
         transaction.commit()
     }
 

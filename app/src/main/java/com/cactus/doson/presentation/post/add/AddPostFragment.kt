@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.cactus.doson.DoSonApplication
@@ -30,9 +31,13 @@ import java.io.File
 
 class AddPostFragment: BaseFragment(R.layout.fragment_add_post) {
     private var binding: FragmentAddPostBinding? = null
+    private lateinit var callback: OnBackPressedCallback
     private var category: String = "sight"
     private var imageOn: Boolean = true
     private var locationOn: Boolean = true
+
+    private var selected_lat : Double ?=null
+    private var selected_lon : Double?=null
 
     private val filePath: String by lazy {
         "${requireActivity().externalCacheDir?.absolutePath}/image.jpeg"
@@ -46,6 +51,14 @@ class AddPostFragment: BaseFragment(R.layout.fragment_add_post) {
         initCategoryButtons()
         initSelectLocationButton()
         initPostButton()
+
+        var bundle: Bundle
+        if(arguments!=null){
+            bundle = arguments as Bundle
+            selected_lat = bundle.getDouble("selected_lat")
+            selected_lon = bundle.getDouble("selected_lon")
+        }
+
     }
 
 

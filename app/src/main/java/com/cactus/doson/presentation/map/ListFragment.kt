@@ -3,6 +3,7 @@ package com.cactus.doson.presentation.map
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.databinding.FragmentListBinding
@@ -11,6 +12,7 @@ import com.cactus.doson.presentation.adapter.listAdapter
 
 class ListFragment :BaseFragment(R.layout.fragment_list){
     private var binding: FragmentListBinding? = null
+    private lateinit var callback: OnBackPressedCallback
 
     var postId = ArrayList<Int>()
     var postTitle  = ArrayList<String>()
