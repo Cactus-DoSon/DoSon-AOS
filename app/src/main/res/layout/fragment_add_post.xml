@@ -136,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:paddingHorizontal="16dp"
+                android:background="@color/transparency"
                 android:hint="내용을 작성해주세요"
                 tools:text="파스타 맛집 친구 모임 장소로 딱입니다. 파스타 맛집 친구 모임 장소로 딱입니다. 파스타 맛집 친구 모임 장소로 딱입니다. 파스타 맛집 친구 모임 장소로 딱입니다."
                 android:textColor="@color/black"

@@ -2,17 +2,26 @@ package com.cactus.doson.presentation.map
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import androidx.activity.OnBackPressedCallback
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cactus.doson.DoSonApplication
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
+import com.cactus.doson.common.Constants
+import com.cactus.doson.common.util.printLog
+import com.cactus.doson.data.response.post.PostDetailResponse
 import com.cactus.doson.databinding.FragmentListBinding
 import com.cactus.doson.databinding.FragmentMapBinding
 import com.cactus.doson.presentation.adapter.listAdapter
+import com.cactus.doson.presentation.location_detail.LocationDetailFragment
+import com.cactus.doson.presentation.post.add.AddPostFragment
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ListFragment :BaseFragment(R.layout.fragment_list){
     private var binding: FragmentListBinding? = null
-    private lateinit var callback: OnBackPressedCallback
 
     var postId = ArrayList<Int>()
     var postTitle  = ArrayList<String>()
@@ -111,11 +120,40 @@ class ListFragment :BaseFragment(R.layout.fragment_list){
         }
 
         binding!!.addPostBtn.setOnClickListener{
-            //moveToFragment(addPostFragment())
+            moveToFragment(AddPostFragment())
         }
 
 
 
+        initRecyclerView()
 
+    }
+
+    private fun initRecyclerView() {
+        binding?.apply {
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            adapter.callback = { pos ->
+                getPostById(postId[pos])
+
+            }
+        }
+    }
+
+    // 6. 글 상세보기
+    private fun getPostById(postId: Int) {
+        DoSonApplication.retrofit.getPostDetail(postId)?.enqueue(object :
+            Callback<PostDetailResponse> {
+            override fun onResponse(
+                call: Call<PostDetailResponse>,
+                response: Response<PostDetailResponse>
+            ) {
+                moveToFragment(LocationDetailFragment())
+            }
+
+            override fun onFailure(call: Call<PostDetailResponse>, t: Throwable) {
+                printLog(Constants.RETROFIT_TAG, t.toString())
+            }
+        })
     }
 }

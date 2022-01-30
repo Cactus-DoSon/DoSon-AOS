@@ -12,7 +12,11 @@ import com.cactus.doson.common.Constants.RETROFIT_TAG
 import com.cactus.doson.common.util.printLog
 import com.cactus.doson.data.body.LoginBody
 import com.cactus.doson.data.response.LoginResponse
+import com.cactus.doson.data.response.all_list.AllListResponse
+import com.cactus.doson.data.response.bottom_data.guest_house.GeustHouseResponse
+import com.cactus.doson.data.response.bottom_data.non_guest_house.NonGeustHouseResponse
 import com.cactus.doson.data.response.map_category.MapCategoryResponse
+import com.cactus.doson.data.response.post.PostDetailResponse
 import com.cactus.doson.databinding.FragmentLoginBinding
 import com.cactus.doson.presentation.signin.SigninFragment
 import com.kakao.sdk.auth.model.OAuthToken
@@ -32,6 +36,10 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
         binding = loginFragmentBinding
 
         initKakaoButton()
+        getAllList()
+       // getPostId(2)
+        getNonGuestHouseData(2)
+        getGuestHouseData(1)
     }
 
 
@@ -132,6 +140,7 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
 
 
     /** api 모음 (적재적소 쓰자!) **/
+    // 3. 지도 카테고리
     private fun getMapDataByCategory() {
         DoSonApplication.retrofit.searchGuestAPI(1, "cafe")?.enqueue(object : Callback<MapCategoryResponse>{
             override fun onResponse(
@@ -142,6 +151,56 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
             }
 
             override fun onFailure(call: Call<MapCategoryResponse>, t: Throwable) {
+                printLog(RETROFIT_TAG, t.toString())
+            }
+        })
+    }
+
+    // 5. 전체 리스트
+    private fun getAllList() {
+        DoSonApplication.retrofit.getAllList(1)?.enqueue(object : Callback<AllListResponse> {
+            override fun onResponse(
+                call: Call<AllListResponse>,
+                response: Response<AllListResponse>
+            ) {
+                Log.d(RETROFIT_TAG, response.body().toString())
+            }
+
+            override fun onFailure(call: Call<AllListResponse>, t: Throwable) {
+                printLog(RETROFIT_TAG, t.toString())
+            }
+        })
+    }
+
+
+
+    // 7. 지도 스팟 찍었을 때 맵 바텀시트 데이터
+    private fun getNonGuestHouseData(postId: Int) {
+        DoSonApplication.retrofit.getBottomNonGuestHouseData(postId)?.enqueue(object : Callback<GeustHouseResponse>{
+            override fun onResponse(
+                call: Call<GeustHouseResponse>,
+                response: Response<GeustHouseResponse>
+            ) {
+                Log.d(RETROFIT_TAG, response.body().toString())
+            }
+
+            override fun onFailure(call: Call<GeustHouseResponse>, t: Throwable) {
+                printLog(RETROFIT_TAG, t.toString())
+            }
+        })
+    }
+
+    // 8. 지도 스팟 찍었을 때 게스트하우스 정보
+    private fun getGuestHouseData(houseId: Int) {
+        DoSonApplication.retrofit.getBottomGuestHouseData(houseId)?.enqueue(object : Callback<NonGeustHouseResponse> {
+            override fun onResponse(
+                call: Call<NonGeustHouseResponse>,
+                response: Response<NonGeustHouseResponse>
+            ) {
+                Log.d(RETROFIT_TAG, response.body().toString())
+            }
+
+            override fun onFailure(call: Call<NonGeustHouseResponse>, t: Throwable) {
                 printLog(RETROFIT_TAG, t.toString())
             }
         })
