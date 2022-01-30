@@ -189,7 +189,7 @@ class AddPostFragment: BaseFragment(R.layout.fragment_add_post) {
 
     private fun checkPossible(): Boolean = imageOn && locationOn &&
             binding!!.etTitle!!.text!!.toString()!!.isNotEmpty() &&
-            binding!!.etDescription!!.toString().isNotEmpty()
+            binding!!.etDescription!!.toString()!!.isNotEmpty()
 
 
 
