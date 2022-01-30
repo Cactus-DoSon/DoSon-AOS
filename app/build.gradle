@@ -66,4 +66,8 @@ dependencies {
 
     //bottom sheet dialog
     implementation "com.google.android.material:material:1.2.0-alpha01"
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 }
