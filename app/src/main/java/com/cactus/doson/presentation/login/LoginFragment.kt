@@ -9,10 +9,8 @@ import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants.JWT
 import com.cactus.doson.common.Constants.RETROFIT_TAG
 import com.cactus.doson.common.util.printLog
-import com.cactus.doson.data.body.EnterBody
 import com.cactus.doson.data.body.LoginBody
 import com.cactus.doson.data.response.LoginResponse
-import com.cactus.doson.data.response.enter.EnterResponse
 import com.cactus.doson.data.response.map_category.MapCategoryResponse
 import com.cactus.doson.databinding.FragmentLoginBinding
 import com.cactus.doson.presentation.signin.SigninFragment
@@ -35,7 +33,6 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
 
 
         initKakaoButton()
-        getMapDataByCategory()
     }
 
 

@@ -170,7 +170,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/iv_back"
             android:layout_marginStart="32dp"
-            android:src="@drawable/icon_24_arrow"
+            android:src="@drawable/icon_24_arrow_left"
             app:layout_constraintBottom_toBottomOf="@id/tv_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_title" />

@@ -13,11 +13,12 @@ import androidx.fragment.app.FragmentTransaction
 import com.cactus.doson.R
 import com.cactus.doson.databinding.ActivityMainBinding
 import com.cactus.doson.presentation.login.LoginFragment
+import com.cactus.doson.presentation.post.add.AddPostFragment
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    var startFragment : Fragment = LoginFragment()
+    var startFragment : Fragment = AddPostFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

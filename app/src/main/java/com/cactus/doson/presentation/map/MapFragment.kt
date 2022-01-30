@@ -3,32 +3,26 @@ package com.cactus.doson.presentation.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.cactus.doson.DoSonApplication.Companion.retrofit
 import com.cactus.doson.R
 import com.cactus.doson.common.BaseFragment
 import com.cactus.doson.common.Constants.ACCESS_CODE
 import com.cactus.doson.common.Constants.NICK_NAME
-import com.cactus.doson.common.Constants.PREFERENCES_NAME
-import com.cactus.doson.data.Post
-import com.cactus.doson.data.RetrofitAPI
+import com.cactus.doson.common.util.printLog
+import com.cactus.doson.data.response.enter.EnterResponse
 import com.cactus.doson.databinding.FragmentMapBinding
 import com.cactus.doson.presentation.dialog.BottomSheet
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.cactus.doson.presentation.post.add.AddPostFragment
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.overlay.OverlayImage
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MapFragment: BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
+class MapFragment(
+    private val enterResponse: EnterResponse
+): BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
     private var binding: FragmentMapBinding? = null
     val guestHouseMarker = Marker()
 
@@ -37,6 +31,8 @@ class MapFragment: BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
         val mapFragmentBinding = FragmentMapBinding.bind(view)
         binding = mapFragmentBinding
         binding!!.mapView.getMapAsync(this@MapFragment)
+
+        printLog("asdf", enterResponse.toString())
 
 
         var selected = "all"
@@ -123,7 +119,7 @@ class MapFragment: BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
         }
 
         binding!!.addPostBtn.setOnClickListener{
-            //moveToFragment(addPostFragment())
+            moveToFragment(AddPostFragment())
         }
 
 
@@ -165,46 +161,6 @@ class MapFragment: BaseFragment(R.layout.fragment_map) , OnMapReadyCallback {
 
         val cameraUpdate = CameraUpdate.scrollTo(LatLng(guestHouseMarker.position.latitude!!, guestHouseMarker.position.longitude!!))
         map.moveCamera(cameraUpdate)
-
-
-
-        /*
-        retrofit.guestEnterAPI(markerInfo)?.enqueue(object : Callback<Post?>{
-            override fun onResponse(call: Call<Post?>, response: Response<Post?>) {
-
-                Log.i("guestEnter",response.body()?.success.toString())
-
-                guestHouseMarker.position = LatLng(response.body()?.getResultList()?.getHouseInfoList()?.lat!!,response.body()?.getResultList()?.getHouseInfoList()?.lon!!)
-                guestHouseMarker.tag = "guestHouse"
-                guestHouseMarker.map = map
-                guestHouseMarker.icon = OverlayImage.fromResource(R.drawable.icon_80_home_off)
-                guestHouseMarker.width = changeDP(80)
-                guestHouseMarker.height = changeDP(80)
-                guestHouseMarker.zIndex = 0
-
-                guestHouseMarker.onClickListener = Overlay.OnClickListener {
-
-
-
-                    val bottomSheet = BottomSheet()
-                    bottomSheet.show(childFragmentManager,bottomSheet.tag)
-                    guestHouseMarker.icon = OverlayImage.fromResource(R.drawable.icon_80_home_on)
-                    guestHouseMarker.zIndex = 100
-                    true
-                }
-
-                val cameraUpdate = CameraUpdate.scrollTo(LatLng(guestHouseMarker.position.latitude!!, guestHouseMarker.position.longitude!!))
-                map.moveCamera(cameraUpdate)
-
-            }
-
-            override fun onFailure(call: Call<Post?>, t: Throwable) {
-                Log.i("guestEnter",t.stackTraceToString())
-            }
-
-        })
-
-         */
 
 
     }

@@ -2,7 +2,151 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_tool_bar_container">
+
+        <LinearLayout
+            android:id="@+id/ll_vertical_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/iv_add_image"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/img_140_photo"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_tool_bar_container" />
+
+            <LinearLayout
+                android:id="@+id/ll_category_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_add_image">
+
+
+                <ImageView
+                    android:id="@+id/iv_sights"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/btn_32_sights_on" />
+
+                <ImageView
+                    android:id="@+id/iv_restauranct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/btn_32_restaurant_off" />
+
+                <ImageView
+                    android:id="@+id/iv_cafe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/btn_32_cafe_off" />
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/v_divider_title"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#EEEEEE" />
+
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="15"
+                android:background="@color/transparency"
+                android:hint="글 제목을 입력하세요"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/v_divider_title" />
+
+
+            <View
+                android:id="@+id/v_divider_location"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_select_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="위치 선택하기"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/icon_24_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/v_divider_description"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE" />
+
+
+            <EditText
+                android:id="@+id/et_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:paddingHorizontal="16dp"
+                android:hint="내용을 작성해주세요"
+                tools:text="파스타 맛집 친구 모임 장소로 딱입니다. 파스타 맛집 친구 모임 장소로 딱입니다. 파스타 맛집 친구 모임 장소로 딱입니다. 파스타 맛집 친구 모임 장소로 딱입니다."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_tool_bar_container"
@@ -34,7 +178,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/iv_back"
             android:layout_marginStart="32dp"
-            android:src="@drawable/icon_24_arrow"
+            android:src="@drawable/icon_24_arrow_left"
             app:layout_constraintBottom_toBottomOf="@id/tv_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_title" />
@@ -43,95 +187,20 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_140_photo"
-        app:layout_constraintTop_toBottomOf="@id/cl_tool_bar_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/iv_add_image"
-        android:layout_marginTop="16dp"/>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:id="@+id/ll_category_container"
-        app:layout_constraintTop_toBottomOf="@+id/iv_add_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/btn_32_sights_off"
-            android:id="@+id/iv_sights"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:src="@drawable/btn_32_restaurant_on"
-            android:id="@+id/iv_restauranct"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:src="@drawable/btn_32_cafe_off"
-            android:id="@+id/iv_cafe"/>
-
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_post"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/ll_vertical_container"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/orange"
+        android:gravity="center"
+        android:paddingVertical="13dp"
+        android:text="게시글 등록"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_category_container"
-        >
-
-        <View
-            android:id="@+id/v_divider_title"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="#EEEEEE"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_category_container"
-            android:layout_marginTop="12dp"/>
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparency"
-            android:paddingVertical="12dp"
-            android:paddingHorizontal="16dp"
-            android:hint="글 제목을 입력하세요"
-            app:layout_constraintTop_toBottomOf="@+id/v_divider_title"/>
-
-
-        <View
-            android:id="@+id/v_divider_location"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="#EEEEEE"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_category_container"
-            android:layout_marginTop="12dp"/>
-
-
-
-
-
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 
